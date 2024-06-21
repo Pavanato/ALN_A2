@@ -37,9 +37,9 @@ Dado um vetor inicial $x_0$, o método da potência itera a multiplicação da m
 + Escolha um vetor inicial $x_0$.
 + Para $k = 1, 2, 3, ...$ faça:
   + $y_k = A x_(k-1)$
-  + $x_k = y_k / (||max(y_k)||)$
+  + $x_k = y_k / (max(y_k))$
 
-Por fim, o autovalor é dado por $lambda = ||max(y_k)||$.
+Por fim, o autovalor é dado por $lambda = max(y_k)$. Onde $max(y_k)$ é o maior valor absoluto de $y_k$.
 
 == Exemplo
 
@@ -49,7 +49,7 @@ Dada a matriz $A = mat(1, 2; 2,1)$, calcule a segunda iteração do método da p
 
 - $y_1 = A x_0 = mat(1, 2; 2, 1) vec(1, 0) = vec(1, 2)$
 
-- $x_1 = y_1 / (||max(y_k)||) = vec(1/2, 1)$
+- $x_1 = y_1 / (max(y_1)) = vec(1/2, 1)$
 
 - $y_2 = A x_1 = mat(1, 2; 2, 1) vec(1/2, 1) = vec(5/2, 2)$
 
@@ -165,5 +165,30 @@ $ Sigma = mat(sqrt(3), 0; 0, sqrt(2)) $
 
 Portanto, a decomposição em valores singulares de $A$ é dada por:
 
-$ A = mat(1/sqrt(3), 0, 2/sqrt(6); -1/sqrt(3), 1/sqrt(2), -1/sqrt(6); 1/sqrt(3), 1/sqrt(2), 1/sqrt(6)) mat(sqrt(3), 0; 0, sqrt(2)) mat(1, 0; 0, 1)^T $
+$ A = mat(1/sqrt(3), 0, 2/sqrt(6); -1/sqrt(3), 1/sqrt(2), -1/sqrt(6); 1/sqrt(3), 1/sqrt(2), 1/sqrt(6)) mat(sqrt(3), 0; 0, sqrt(2);0,0) mat(1, 0; 0, 1)^T $
+
+= Psuedo-Inversa
+
+Dada uma matriz $A$, a pseudo-inversa $A^+$ é uma generalização da inversa de $A$ para matrizes não quadradas. A pseudo-inversa é dada por $A^+ = V Sigma^+ U^T$, onde $U$, $Sigma$ e $V$ são as matrizes da decomposição em valores singulares de $A$.
+
+Onde $Sigma^+$ é a pseudo-inversa de $Sigma$, obtida substituindo os elementos não nulos de $Sigma$ por seus inversos e transpondo a matriz resultante.
+
+== Exemplo
+
+Usando o exemplo anterior, calcule a pseudo-inversa da matriz $A = mat(1, 0; 1, 1; -1, 1)$.
+
+Já calculamos a decomposição em valores singulares de $A$, então basta calcular a pseudo-inversa:
+
+$ Sigma^+ = mat(1/sqrt(3), 0; 0, 1/sqrt(2);0,0)^T = mat(1/sqrt(3), 0,0; 0, 1/sqrt(2),0) $
+
+Portanto, a pseudo-inversa de $A$ é dada por:
+
+
+$ A^+ &= mat(1, 0; 0, 1) mat(1/sqrt(3), 0,0; 0, 1/sqrt(2),0) mat(1/sqrt(3), 0, 2/sqrt(6); -1/sqrt(3), 1/sqrt(2), -1/sqrt(6); 1/sqrt(3), 1/sqrt(2), 1/sqrt(6))^T \
+&= mat(1/3, 1/3, -1/3; 0, 1/2, 1/2) $
+
+Podemos checar que a pseudo-inversa de $A$ é correta verificando que $A^+ A = I$:
+
+$ A^+ A = mat(1/3, 1/3, -1/3; 0, 1/2, 1/2) mat(1, 0; 1, 1; -1, 1) = mat(1, 0; 0, 1) $
+
 
