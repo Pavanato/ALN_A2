@@ -197,7 +197,7 @@ A transformação de Householder é uma transformação ortogonal que zera todos
 
 $ H = I - 2 u u^T $
 
-Onde $u = (x - ||x|| e_1)/(||x - ||x|| e_1||)$, $e_1$ é o primeiro vetor da base canônica e $||x||$ é a norma de $x$.
+Onde $u = (x + ||x|| e_1)/(||x + ||x|| e_1||)$, $e_1$ é o primeiro vetor da base canônica e $||x||$ é a norma de $x$.
 
 == Exemplo
 
@@ -205,12 +205,21 @@ Dada a matriz $A$, calcule a transformação de Householder que zera os elemento
 
 *Solução:*
 
-Seja $a_1$ a primeira coluna de $A$. O vetor $u$ é dado por $u = (a_1 - ||a_1|| e_1)/(||a_1 - ||a_1|| e_1||)$. A matriz $H$ é dada por:
+Seja $a_1$ a primeira coluna de $A$. O vetor $u$ é dado por $u = (a_1 + ||a_1|| e_1)/(||a_1 + ||a_1|| e_1||)$. A matriz $H$ é dada por:
 
-$ H = I - 2 u u^T $
+$ H_1 = I - 2 u u^T $
 
 Onde aplicamos a transformação de Householder em $A$:
 
-$ H dot A $
+$ H_1 dot A = Q_1 dot A $
+
+Caso quisessemos pegar a segunda coluna, bastaria fazer $H_2 = I - 2 u_2 u_2^T$ e aplicar $Q_2 dot Q_1 dot A$. Onde para construir $u_2$ pegamos a segunda coluna de $Q_1 dot A$ a partir do segundo elemento. E construímos $Q_2$ da seguinte forma:
+
+$ Q_2 = mat(1, dots ,0; dots.v,H_2,;0) $
+
+(ficou meio paia, mas é tipo você criar uma linha de zeros e uma coluna de zeros e colocar a matriz $H_2$ no lugar certo, onde tem um "1" no $a_(11)$)
+
 
 Se quiser ver isso com uma matriz $A$ verdade, faça a questão $4)b)$ da prova de $2022$
+
+E a questão $5)$ de $2023$.
