@@ -122,3 +122,48 @@ $ Q = mat(1/sqrt(3), -1/sqrt(2), 1/sqrt(6); 1/sqrt(3), 0, -2/sqrt(6); 1/sqrt(3),
 A matriz $R$ é obtida a partir da multiplicação $Q^T A$:
 
 $ R = Q^T A = mat(1/sqrt(3), 1/sqrt(3), 1/sqrt(3); -1/sqrt(2), 0, 1/sqrt(2); 1/sqrt(6), -2/sqrt(6), 1/sqrt(6)) mat(1, 1; 1, 2; 1, 3) = mat(sqrt(3), 2 sqrt(3); 0, sqrt(2); 0, 0) $
+
+= Decomposição em Valores Singulares
+
+Dada uma matriz $A$, a decomposição em valores singulares consiste em encontrar três matrizes $U$, $Sigma$ e $V$ tais que $A = U Sigma V^T$, onde $U$ e $V$ são ortogonais e $Sigma$ é uma matriz diagonal com os autovalores de $A$.
+
+== Exemplo
+
+Dada a matriz $A = mat(1, 0; 1, 1; -1, 1)$, calcule a decomposição em valores singulares.
+
+*Solução:*
+
+A matriz $A^T A$ é dada por:
+
+$ A^T A = mat(1, 1, -1; 0, 1, 1) mat(1, 0; 1, 1; -1, 1) = mat(3, 0; 0, 2) $
+
+Os autovalores de $A^T A$ são $lambda_1 = 3$ e $lambda_2 = 2$. Os autovetores correspondentes são $v_1 = vec(1, 0)$ e $v_2 = vec(0, 1)$.
+
+A matriz $V$ é dada por:
+
+$ V = mat(1, 0; 0, 1) $
+
+A matriz $A A^T$ é dada por:
+
+$ A A^T = mat(1, 0; 1, 1; -1, 1) mat(1, 1, -1; 0, 1, 1) = mat(1, 1, -1; 1, 2, 0; -1, 0, 2) $
+
+Os autovalores de $A A^T$ são $lambda_1 = 3$, $lambda_2 = 2$ e $lambda_3 = 0$. Os autovetores correspondentes são:
+
+$ u_1 = vec(-1, -1, 1)", " u_2 = vec(0, 1, 1) "e " u_3 = vec(2, -1, 1) $
+
+Normalizando os autovetores, obtemos:
+
+$ u_1 = vec(-1/sqrt(3), -1/sqrt(3), 1/sqrt(3)) ", " u_2 = vec(0, 1/sqrt(2), 1/sqrt(2)) "e " u_3 = vec(2/sqrt(6), -1/sqrt(6), 1/sqrt(6)) $
+
+Portanto, a matriz $U$ é dada por:
+
+$ U = mat(-1/sqrt(3), 0, 2/sqrt(6); -1/sqrt(3), 1/sqrt(2), -1/sqrt(6); 1/sqrt(3), 1/sqrt(2), 1/sqrt(6)) $
+
+A matriz $Sigma$ é dada por:
+
+$ Sigma = mat(sqrt(3), 0; 0, sqrt(2)) $
+
+Portanto, a decomposição em valores singulares de $A$ é dada por:
+
+$ A = mat(1/sqrt(3), 0, 2/sqrt(6); -1/sqrt(3), 1/sqrt(2), -1/sqrt(6); 1/sqrt(3), 1/sqrt(2), 1/sqrt(6)) mat(sqrt(3), 0; 0, sqrt(2)) mat(1, 0; 0, 1)^T $
+
