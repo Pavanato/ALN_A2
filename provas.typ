@@ -62,9 +62,15 @@ Dada uma matriz $A$, os discos de Gerschgorin são regiões circulares no plano 
 
 == Exemplo
 
-Dada a matriz $A = mat(1, 1, 1; 1, 3, 2; 3, 2, 5)$, calcule os discos de Gerschgorin. Imagem:
+Dada a matriz $A = mat(1, 1, -1; 1, 3, 2; 3, 2, 5)$, calcule os discos de Gerschgorin. Imagem:
 
+#figure(image("gersh1.png", width: 40%), caption: [
+    Discos de Gerschgorin para a matriz $A$
+])
 
+#figure(image("gersh2.png", width: 40%), caption: [
+    Discos de Gerschgorin para a matriz $A^T$
+])
 
 = Mínimos Quadrados
 
