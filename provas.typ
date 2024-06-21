@@ -161,13 +161,13 @@ $ U = mat(-1/sqrt(3), 0, 2/sqrt(6); -1/sqrt(3), 1/sqrt(2), -1/sqrt(6); 1/sqrt(3)
 
 A matriz $Sigma$ é dada por:
 
-$ Sigma = mat(sqrt(3), 0; 0, sqrt(2)) $
+$ Sigma = mat(sqrt(3), 0; 0, sqrt(2);0,0) $
 
 Portanto, a decomposição em valores singulares de $A$ é dada por:
 
 $ A = mat(1/sqrt(3), 0, 2/sqrt(6); -1/sqrt(3), 1/sqrt(2), -1/sqrt(6); 1/sqrt(3), 1/sqrt(2), 1/sqrt(6)) mat(sqrt(3), 0; 0, sqrt(2);0,0) mat(1, 0; 0, 1)^T $
 
-= Psuedo-Inversa
+= Pseudo-Inversa
 
 Dada uma matriz $A$, a pseudo-inversa $A^+$ é uma generalização da inversa de $A$ para matrizes não quadradas. A pseudo-inversa é dada por $A^+ = V Sigma^+ U^T$, onde $U$, $Sigma$ e $V$ são as matrizes da decomposição em valores singulares de $A$.
 
@@ -191,4 +191,26 @@ Podemos checar que a pseudo-inversa de $A$ é correta verificando que $A^+ A = I
 
 $ A^+ A = mat(1/3, 1/3, -1/3; 0, 1/2, 1/2) mat(1, 0; 1, 1; -1, 1) = mat(1, 0; 0, 1) $
 
+= Householder
 
+A transformação de Householder é uma transformação ortogonal que zera todos os elementos de um vetor, exceto o primeiro. Dada uma matriz $A$ e um vetor $x$, a transformação de Householder é dada por:
+
+$ H = I - 2 u u^T $
+
+Onde $u = (x - ||x|| e_1)/(||x - ||x|| e_1||)$, $e_1$ é o primeiro vetor da base canônica e $||x||$ é a norma de $x$.
+
+== Exemplo
+
+Dada a matriz $A$, calcule a transformação de Householder que zera os elementos da primeira coluna, exceto o primeiro.
+
+*Solução:*
+
+Seja $a_1$ a primeira coluna de $A$. O vetor $u$ é dado por $u = (a_1 - ||a_1|| e_1)/(||a_1 - ||a_1|| e_1||)$. A matriz $H$ é dada por:
+
+$ H = I - 2 u u^T $
+
+Onde aplicamos a transformação de Householder em $A$:
+
+$ H dot A $
+
+Se quiser ver isso com uma matriz $A$ verdade, faça a questão $4)b)$ da prova de $2022$
